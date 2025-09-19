@@ -4,6 +4,12 @@ package com.example.demo.article.controller;
 import com.example.demo.article.dto.ArticleDTO;
 import com.example.demo.article.entity.Article;
 import com.example.demo.article.service.ArticleService;
+import com.example.demo.global.RsData.RsData;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,8 +22,13 @@ import java.util.List;
 public class ApiV1ArticleController {
     private final ArticleService articleService;
 
+    @Getter
+    @AllArgsConstructor
+    public static class ArticlesResponse {
+        private final List<ArticleDTO> articleList;
+    }
     @GetMapping("")
-    public List<ArticleDTO> list(){
+    public RsData<ArticlesResponse> list(){
         List<ArticleDTO> articleList = new ArrayList<>();
 
         Article article1 = new Article("제목1", "내용1");
@@ -27,23 +38,54 @@ public class ApiV1ArticleController {
         Article article3 = new Article("제목3", "내용3");
         articleList.add (new ArticleDTO(article3));
 
-        return articleList;
+        return RsData.of("200", "게시글 다건 조회 성공", new ArticlesResponse(articleList));
+    }
+
+
+    @Getter
+    @AllArgsConstructor
+    public static class ArticleResponse {
+        private final ArticleDTO article;
     }
     @GetMapping("/{id}")
-    public String getArticle(){
+    public RsData<ArticleResponse> getArticle(@PathVariable("id") Long id){
+        Article article =new Article("제목1", "내용1");
 
-        return  "단건";
+        ArticleDTO articleDTO = new ArticleDTO(article);
+
+        return RsData.of("200", "게시글 다건 조회 성공", new ArticleResponse(articleDTO));
+    }
+
+
+    @Data // 웬만한 게터 세터 포함 모두 사용 가능함 (종합선물세트)
+    public static class ArticleRequest {
+        @NotBlank
+        private String subject;
+
+        @NotBlank
+        private String content;
     }
     @PostMapping("")
-    public String create(){
+    public String create(@Valid @RequestBody ArticleRequest articleRequest){
+        System.out.println(articleRequest.subject);
+        System.out.println(articleRequest.content);
         return  "등록";
     }
+
+
     @PatchMapping("/{id}")
-    public String modify(){
+    public String modify(@PathVariable("id") Long id,
+                         @RequestParam("subject") String subject,
+                         @RequestParam("content") String content){
+        System.out.println(id);
+        System.out.println(subject);
+        System.out.println(content);
         return  "수정";
     }
+
     @DeleteMapping("/{id}")
-    public String delete(){
+    public String delete(@PathVariable("id") Long id){
+        System.out.println(id);
         return  "삭제";
     }
 }
