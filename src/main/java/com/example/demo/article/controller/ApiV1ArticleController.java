@@ -23,8 +23,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 
 @RestController
-@RequestMapping(value = "/api/v1/articles", produces = APPLICATION_JSON_VALUE,
-        consumes = APPLICATION_JSON_VALUE)// swagger
+@RequestMapping(value = "/api/v1/articles", produces = APPLICATION_JSON_VALUE)// swagger
 @RequiredArgsConstructor // 생성자 자동 생성
 @Tag(name = "ApiV1ArticleController", description = "게시글 CRUD API")// swagger
 public class ApiV1ArticleController {
