@@ -13,7 +13,6 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -25,14 +24,7 @@ public class ApiV1ArticleController {
 
     @GetMapping("")
     public RsData<ArticlesResponse> list(){
-        List<ArticleDTO> articleList = new ArrayList<>();
-
-        Article article1 = new Article("제목1", "내용1");
-        articleList.add (new ArticleDTO(article1));
-        Article article2 = new Article("제목2", "내용2");
-        articleList.add (new ArticleDTO(article2));
-        Article article3 = new Article("제목3", "내용3");
-        articleList.add (new ArticleDTO(article3));
+        List<ArticleDTO> articleList = articleService.getList();
 
         return RsData.of("200", "게시글 다건 조회 성공", new ArticlesResponse(articleList));
     }
@@ -41,32 +33,26 @@ public class ApiV1ArticleController {
 
     @GetMapping("/{id}")
     public RsData<ArticleResponse> getArticle(@PathVariable("id") Long id){
-        Article article =new Article("제목1", "내용1");
+        Article article = new Article("제목1", "내용1");
 
-        ArticleDTO articleDTO = new ArticleDTO(article);
+        ArticleDTO articleDTO = articleService.getArticle(id);
 
         return RsData.of("200", "게시글 다건 조회 성공", new ArticleResponse(articleDTO));
     }
 
     @PostMapping("")
     public String create(@Valid @RequestBody ArticleCreateRequest articleCreateRequest){
-        System.out.println(articleCreateRequest.getSubject());
-        System.out.println(articleCreateRequest.getContent());
         return  "등록";
     }
 
 
     @PatchMapping("/{id}")
     public String modify(@PathVariable("id") Long id, @Valid @RequestBody ArticleModifyRequest articleModifyRequest){
-        System.out.println(id);
-        System.out.println(articleModifyRequest.getSubject());
-        System.out.println(articleModifyRequest.getContent());
         return  "수정";
     }
 
     @DeleteMapping("/{id}")
     public String delete(@PathVariable("id") Long id){
-        System.out.println(id);
         return  "삭제";
     }
 }
