@@ -1,9 +1,6 @@
 spring:
-  datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:test;MODE=MySQL #h2가 mysql문법을 흉내낼 수 있게.
-    username: sa
-    password:
+  profiles:
+    active: dev
   jpa:
     hibernate:
       ddl-auto: create

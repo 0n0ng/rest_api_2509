@@ -1,7 +1,7 @@
-package com.example.demo.article.repository;
+package com.example.demo.damain.article.repository;
 
 
-import com.example.demo.article.entity.Article;
+import com.example.demo.damain.article.entity.Article;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

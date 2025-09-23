@@ -1,4 +1,4 @@
-package com.example.demo.article.request;
+package com.example.demo.damain.article.request;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;

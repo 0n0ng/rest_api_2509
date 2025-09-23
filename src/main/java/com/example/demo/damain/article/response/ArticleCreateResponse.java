@@ -1,7 +1,7 @@
-package com.example.demo.article.response;
+package com.example.demo.damain.article.response;
 
 
-import com.example.demo.article.entity.Article;
+import com.example.demo.damain.article.entity.Article;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

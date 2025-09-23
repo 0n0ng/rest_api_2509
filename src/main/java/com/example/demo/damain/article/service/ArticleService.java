@@ -1,8 +1,8 @@
-package com.example.demo.article.service;
+package com.example.demo.damain.article.service;
 
-import com.example.demo.article.dto.ArticleDTO;
-import com.example.demo.article.entity.Article;
-import com.example.demo.article.repository.ArticleRepository;
+import com.example.demo.damain.article.dto.ArticleDTO;
+import com.example.demo.damain.article.entity.Article;
+import com.example.demo.damain.article.repository.ArticleRepository;
 import jakarta.validation.constraints.NotBlank;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
