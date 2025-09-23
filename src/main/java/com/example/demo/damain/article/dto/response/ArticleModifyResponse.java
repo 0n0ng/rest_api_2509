@@ -1,4 +1,4 @@
-package com.example.demo.damain.article.response;
+package com.example.demo.damain.article.dto.response;
 
 import com.example.demo.damain.article.entity.Article;
 import lombok.AllArgsConstructor;

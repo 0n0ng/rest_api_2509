@@ -3,12 +3,12 @@ package com.example.demo.damain.article.controller;
 
 import com.example.demo.damain.article.dto.ArticleDTO;
 import com.example.demo.damain.article.entity.Article;
-import com.example.demo.damain.article.request.ArticleCreateRequest;
-import com.example.demo.damain.article.request.ArticleModifyRequest;
-import com.example.demo.damain.article.response.ArticleCreateResponse;
-import com.example.demo.damain.article.response.ArticleModifyResponse;
-import com.example.demo.damain.article.response.ArticleResponse;
-import com.example.demo.damain.article.response.ArticlesResponse;
+import com.example.demo.damain.article.dto.request.ArticleCreateRequest;
+import com.example.demo.damain.article.dto.request.ArticleModifyRequest;
+import com.example.demo.damain.article.dto.response.ArticleCreateResponse;
+import com.example.demo.damain.article.dto.response.ArticleModifyResponse;
+import com.example.demo.damain.article.dto.response.ArticleResponse;
+import com.example.demo.damain.article.dto.response.ArticlesResponse;
 import com.example.demo.damain.article.service.ArticleService;
 import com.example.demo.global.RsData.RsData;
 import io.swagger.v3.oas.annotations.Operation;

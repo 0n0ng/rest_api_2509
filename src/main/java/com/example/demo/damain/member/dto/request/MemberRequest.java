@@ -1,4 +1,4 @@
-package com.example.demo.damain.member.request;
+package com.example.demo.damain.member.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
