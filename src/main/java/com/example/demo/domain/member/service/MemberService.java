@@ -2,6 +2,7 @@ package com.example.demo.domain.member.service;
 
 import com.example.demo.domain.member.entity.Member;
 import com.example.demo.domain.member.repository.MemberRepository;
+import jakarta.validation.constraints.NotBlank;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -26,5 +27,9 @@ public class MemberService {
         memberRepository.save(member);
 
         return member;
+    }
+
+    public Member getMember(@NotBlank String username) {
+        return memberRepository.findByUsername(username);
     }
 }
