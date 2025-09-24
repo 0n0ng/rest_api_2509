@@ -1,8 +1,8 @@
 package com.example.demo.global.initData;
 
-import com.example.demo.damain.article.service.ArticleService;
-import com.example.demo.damain.member.entity.Member;
-import com.example.demo.damain.member.service.MemberService;
+import com.example.demo.domain.article.service.ArticleService;
+import com.example.demo.domain.member.entity.Member;
+import com.example.demo.domain.member.service.MemberService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
