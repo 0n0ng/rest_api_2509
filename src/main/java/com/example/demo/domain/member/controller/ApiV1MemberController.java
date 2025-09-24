@@ -40,7 +40,12 @@ public class ApiV1MemberController {
 
         // accessToken발급
         String accessToken = jwtProvider.genAccessToken(member);
-        res.addCookie(new Cookie("accessToken", accessToken));
+        Cookie cookie = new Cookie("accessToken", accessToken);
+        cookie.setHttpOnly(true);
+        cookie.setSecure(true); // https에서만 전송
+        cookie.setPath("/");
+        cookie.setMaxAge(60*60); // 유효기간 1시간
+        res.addCookie(cookie);
 
         return RsData.of("200", "토근 발급 성공 : " + accessToken, new MemberResponse(member));
     }
