@@ -33,6 +33,10 @@ public class MemberService {
                 .password(passwordEncoder.encode(password))
                 .build();
 
+        // 회원가입과 동시에 리프레시토큰 생성
+        String refreshToken = jwtProvider.genRefreshToken(member);
+        member.setRefreshToken(refreshToken);
+
         memberRepository.save(member);
 
         return member;
