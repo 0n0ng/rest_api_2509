@@ -19,4 +19,6 @@ public class Member extends BaseEntity {
     private String username;
     @JsonIgnore // json형태로 보여줄 때 password는 안 보여줌
     private String password;
+    @JsonIgnore
+    private String refreshToken;
 }
