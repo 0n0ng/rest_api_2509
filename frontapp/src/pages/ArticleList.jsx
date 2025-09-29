@@ -1,10 +1,24 @@
+import { useState } from "react"
+
 function ArticleList( ) {
-    return <>목록    
+    const [articleList, setArticleList] = useState([])
+
+    fetch("http//localhost:8090/api/vq/articles")
+    // 받아졌을 때 .then
+        .then((res) => res.json())
+        .then((res) => {
+            console.log(res)
+        })
+
+    return ( 
+        <>  
     <ul>
-        <li>1</li>
-        <li>2</li>
+        {articleList.map((article) => (
+            <li key={article.id}>{article.subject}</li>
+        ))}
     </ul>
 </>
+    )
 
 }
 export default ArticleList
