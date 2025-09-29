@@ -1,22 +1,47 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
 
 function ArticleList( ) {
     const [articleList, setArticleList] = useState([])
 
-    fetch("http//localhost:8090/api/vq/articles")
+    useEffect(() => {
+            fetch("http//localhost:8090/api/v1/articles")
     // 받아졌을 때 .then
         .then((res) => res.json())
         .then((res) => {
-            console.log(res)
+            // articleList데이터만 확인 할 수 있게
+            // 두 줄 이상만 {}로 묶어줌
+            console.log(res.data.articleList)
+            setArticleList(res.data.articleList) 
         })
+    }, [])
 
     return ( 
         <>  
-    <ul>
-        {articleList.map((article) => (
-            <li key={article.id}>{article.subject}</li>
-        ))}
-    </ul>
+    <h2>게시글 목록</h2>
+
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Subject</th>
+                        <th>Content</th>
+                        <th>Author</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {articleList.map((article) => (
+                        <tr key={article.id}>
+                            <td>{article.id}</td>
+                        <td>
+                                <Link to={`/article/detail/${article.id}`}>{article.subject}</Link>
+                            </td>
+                            <td>{article.content}</td>
+                            <td>{article.author}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
 </>
     )
 
